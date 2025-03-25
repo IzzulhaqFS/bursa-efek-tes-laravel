@@ -9,3 +9,12 @@ Route::post('/login', App\Http\Controllers\Api\LoginController::class)->name('lo
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::middleware('auth:api')->group(function () {
+    Route::get('/category-products', [App\Http\Controllers\Api\CategoryProductController::class, 'index'])->name('index');
+    Route::post('/category-products', [App\Http\Controllers\Api\CategoryProductController::class, 'store'])->name('store');
+    Route::get('/category-products/{id}', [App\Http\Controllers\Api\CategoryProductController::class, 'show'])->name('show');
+    Route::put('/category-products/{id}', [App\Http\Controllers\Api\CategoryProductController::class, 'update'])->name('update');
+    Route::delete('/category-products/{id}', [App\Http\Controllers\Api\CategoryProductController::class, 'destroy'])->name('destroy');
+});
