@@ -17,4 +17,10 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/category-products/{id}', [App\Http\Controllers\Api\CategoryProductController::class, 'show'])->name('show');
     Route::put('/category-products/{id}', [App\Http\Controllers\Api\CategoryProductController::class, 'update'])->name('update');
     Route::delete('/category-products/{id}', [App\Http\Controllers\Api\CategoryProductController::class, 'destroy'])->name('destroy');
+
+    Route::get('/products', [App\Http\Controllers\Api\ProductController::class, 'index'])->name('index');
+    Route::post('/products', [App\Http\Controllers\Api\ProductController::class, 'store'])->name('store');
+    Route::get('/products/{id}', [App\Http\Controllers\Api\ProductController::class, 'show'])->name('show');
+    Route::put('/products/{id}', [App\Http\Controllers\Api\ProductController::class, 'update'])->name('update');
+    Route::delete('/products/{id}', [App\Http\Controllers\Api\ProductController::class, 'destroy'])->name('destroy');
 });
